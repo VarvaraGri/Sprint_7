@@ -21,7 +21,6 @@ public class LoginCourierTest {
     public void setUp(){
         RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
         courier = new Courier();
-        RestAssured.baseURI = "https://qa-scooter.praktikum-services.ru/";
         courier.setLogin(RandomStringUtils.randomAlphabetic(5));
         courier.setPassword(RandomStringUtils.randomAlphabetic(4));
         courier.setFirstName(RandomStringUtils.randomAlphabetic(5));

@@ -3,6 +3,7 @@ package ru.yandex.practicum.test;
 import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -53,11 +54,18 @@ public class CreateOrderTest {
 
     @Test
     public void differentColorInOrder(){
+        order.track =
         orderSteps.createOrder(order)
                 .then()
                 .statusCode(201)
                 .and()
-                .body("track", notNullValue());
+                .body("track", notNullValue())
+                .and()
+                .extract().body().path("track");
     }
 
+    @After
+    public void tearDown(){
+        orderSteps.cancelOrder(order);
+    }
 }

@@ -1,5 +1,7 @@
 package ru.yandex.practicum.test;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
@@ -22,7 +24,6 @@ public class CreateCourierTest {
     public void setUp(){
         RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
         courier = new Courier();
-        RestAssured.baseURI = "https://qa-scooter.praktikum-services.ru/";
         courier.setLogin(RandomStringUtils.randomAlphabetic(5));
         courier.setPassword(RandomStringUtils.randomAlphabetic(4));
         courier.setFirstName(RandomStringUtils.randomAlphabetic(5));
@@ -30,16 +31,21 @@ public class CreateCourierTest {
 
 
     @Test
+    @DisplayName("Check status code of /v1/courier")
+    @Description("Basic test for /v1/courier endpoint")
     public void shouldCreateCourier(){
+        courierCreated = true;
         courierSteps.createCourier(courier)
                 .then()
                 .statusCode(201)
                 .and()
                 .body("ok", is(true));
-        courierCreated = true;
+
     }
 
     @Test
+    @DisplayName("Check mistake code of /v1/courier")
+    @Description("Test for /v1/courier endpoint not creating same courier")
     public void shouldNotCreateDoppelCourier(){
         courierSteps.createCourier(courier);
         courierCreated = true;
@@ -51,6 +57,8 @@ public class CreateCourierTest {
     }
 
     @Test
+    @DisplayName("Check mistake code of /v1/courier")
+    @Description("Test for /v1/courier endpoint not creating courier with same login")
     public void shouldNotCreateCourierWithSameLogin(){
         courierSteps.createCourier(courier);
         courierCreated = true;
