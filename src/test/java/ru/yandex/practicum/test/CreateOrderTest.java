@@ -1,5 +1,7 @@
 package ru.yandex.practicum.test;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
@@ -53,6 +55,8 @@ public class CreateOrderTest {
     }
 
     @Test
+    @DisplayName("Check code of /v1/orders")
+    @Description("Test for /v1/orders endpoint for creating order with different color")
     public void differentColorInOrder(){
         order.track =
         orderSteps.createOrder(order)

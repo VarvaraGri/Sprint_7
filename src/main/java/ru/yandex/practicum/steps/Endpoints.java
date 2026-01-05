@@ -1,11 +1,11 @@
 package ru.yandex.practicum.steps;
 
 public class Endpoints {
-    public static final String BASEURI = "https://qa-scooter.praktikum-services.ru/";
-    public static final String CREATECOURIERHANDLE = "/api/v1/courier";
-    public static final String LOGINCOURIERHANDLE = "/api/v1/courier/login";
-    public static final String DELETECOURIERHANDLE = "/api/v1/courier/{id}";
-    public static final String CREATEORDERHANDLE = "/api/v1/orders";
-    public static final String CANCELORDERHANDLE = "/api/v1/orders/cancel";
-    public static final String GETORDERLISTHANDLE = "/v1/orders?courierId=1";
+    public static final String BASE_URI = "https://qa-scooter.praktikum-services.ru/";
+    public static final String CREATE_COURIER_HANDLE = "/api/v1/courier";
+    public static final String LOGIN_COURIER_HANDLE = "/api/v1/courier/login";
+    public static final String DELETE_COURIER_HANDLE = "/api/v1/courier/{id}";
+    public static final String CREATE_ORDER_HANDLE = "/api/v1/orders";
+    public static final String CANCEL_ORDER_HANDLE = "/api/v1/orders/cancel";
+    public static final String GET_ORDER_LIST_HANDLE = "/v1/orders?courierId=1";
 }

@@ -1,5 +1,7 @@
 package ru.yandex.practicum.test;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
@@ -29,6 +31,8 @@ public class LoginCourierTest {
 
 
     @Test
+    @DisplayName("Check status code of /v1/courier/login")
+    @Description("Basic test for /v1/courier/login endpoint")
     public void shouldLoginCourier(){
         courierSteps.loginCourier(courier)
                 .then()
@@ -38,6 +42,8 @@ public class LoginCourierTest {
     }
 
     @Test
+    @DisplayName("Check mistake code of /v1/courier/login, when logging without login")
+    @Description("Test for /v1/courier/login endpoint for mistake massage when logging without login")
     public void ifNoLoginShouldReturnMistake(){
         String tmpLogin = courier.getLogin();
         courier.setLogin("");
@@ -50,6 +56,8 @@ public class LoginCourierTest {
     }
 
     @Test
+    @DisplayName("Check mistake code of /v1/courier/login, when logging without password")
+    @Description("Test for /v1/courier/login endpoint for mistake massage when logging without password")
     public void ifNoPasswordShouldReturnMistake(){
         String tmpPassword = courier.getPassword();
         courier.setPassword("");
@@ -62,6 +70,8 @@ public class LoginCourierTest {
     }
 
     @Test
+    @DisplayName("Check mistake code of /v1/courier/login, when logging with wrong login")
+    @Description("Test for /v1/courier/login endpoint for mistake massage when logging with wrong login")
     public void ifWrongLoginShouldReturnMistake(){
         String tmpLogin = courier.getLogin();
         courier.setLogin(RandomStringUtils.randomAlphabetic(5));
@@ -74,6 +84,8 @@ public class LoginCourierTest {
     }
 
     @Test
+    @DisplayName("Check mistake code of /v1/courier/login, when logging with wrong password")
+    @Description("Test for /v1/courier/login endpoint for mistake massage when logging with wrong password")
     public void ifWrongPasswordShouldReturnMistake(){
         String tmpPassword = courier.getPassword();
         courier.setPassword(RandomStringUtils.randomAlphabetic(4));

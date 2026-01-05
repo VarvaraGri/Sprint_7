@@ -1,14 +1,12 @@
 package ru.yandex.practicum.test;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import ru.yandex.practicum.models.Courier;
-import ru.yandex.practicum.steps.CourierSteps;
 import ru.yandex.practicum.steps.OrderSteps;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -19,10 +17,11 @@ public class GetOrderListTest {
     @Before
     public void setUp(){
         RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
-        RestAssured.baseURI = "https://qa-scooter.praktikum-services.ru/";
     }
 
     @Test
+    @DisplayName("Check code of /v1/orders?courierId=1")
+    @Description("Test for /v1/orders?courierId=1 endpoint for getting order list")
     public void shouldReturnCouriersAllOrders(){
 
         orderSteps.getOrderList()

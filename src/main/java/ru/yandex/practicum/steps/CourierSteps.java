@@ -14,10 +14,10 @@ public class CourierSteps {
 
         return given()
                 .header("Content-type", "application/json")
-                .baseUri(BASEURI)
+                .baseUri(BASE_URI)
                 .body(courier)
                 .when()
-                .post(CREATECOURIERHANDLE);
+                .post(CREATE_COURIER_HANDLE);
     }
 
     @Step("Send POST request to /api/v1/courier/login")
@@ -25,19 +25,19 @@ public class CourierSteps {
 
         return given()
                 .header("Content-type", "application/json")
-                .baseUri(BASEURI)
+                .baseUri(BASE_URI)
                 .body(courier)
                 .when()
-                .post(LOGINCOURIERHANDLE);
+                .post(LOGIN_COURIER_HANDLE);
     }
 
     @Step("Send DELETE request to /api/v1/courier/{id}")
     public Response deleteCourier(Courier courier) {
         return given()
                 .header("Content-type", "application/json")
-                .baseUri(BASEURI)
+                .baseUri(BASE_URI)
                 .pathParams("id", courier.id)
                 .when()
-                .delete(DELETECOURIERHANDLE);
+                .delete(DELETE_COURIER_HANDLE);
     }
 }

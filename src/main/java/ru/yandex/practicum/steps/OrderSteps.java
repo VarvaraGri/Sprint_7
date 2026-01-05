@@ -14,28 +14,28 @@ public class OrderSteps {
     public Response createOrder(Order order) {
         return given()
                 .header("Content-type", "application/json")
-                .baseUri(BASEURI)
+                .baseUri(BASE_URI)
                 .body(order)
                 .when()
-                .post(CREATEORDERHANDLE);
+                .post(CREATE_ORDER_HANDLE);
     }
 
     @Step("Send GET request to /v1/orders?courierId=1")
     public Response getOrderList() {
         return given()
                 .header("Content-type", "application/json")
-                .baseUri(BASEURI)
+                .baseUri(BASE_URI)
                 .when()
-                .get(GETORDERLISTHANDLE);
+                .get(GET_ORDER_LIST_HANDLE);
     }
 
     @Step("Send CANCEL request to /api/v1/orders/cancel")
     public Response cancelOrder(Order order) {
         return given()
                 .header("Content-type", "application/json")
-                .baseUri(BASEURI)
+                .baseUri(BASE_URI)
                 .body(order)
                 .when()
-                .put(CANCELORDERHANDLE);
+                .put(CANCEL_ORDER_HANDLE);
     }
 }

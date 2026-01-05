@@ -44,7 +44,7 @@ public class CreateCourierTest {
     }
 
     @Test
-    @DisplayName("Check mistake code of /v1/courier")
+    @DisplayName("Check mistake code of /v1/courier, when creating same courier")
     @Description("Test for /v1/courier endpoint not creating same courier")
     public void shouldNotCreateDoppelCourier(){
         courierSteps.createCourier(courier);
@@ -57,7 +57,7 @@ public class CreateCourierTest {
     }
 
     @Test
-    @DisplayName("Check mistake code of /v1/courier")
+    @DisplayName("Check mistake code of /v1/courier, when login already exists")
     @Description("Test for /v1/courier endpoint not creating courier with same login")
     public void shouldNotCreateCourierWithSameLogin(){
         courierSteps.createCourier(courier);
@@ -72,6 +72,8 @@ public class CreateCourierTest {
     }
 
     @Test
+    @DisplayName("Check mistake code of /v1/courier, with no login")
+    @Description("Test for /v1/courier endpoint not creating courier with no login")
     public void ifNoLoginShouldReturnMistakeBadRequest(){
         courier.setLogin("");
         courierSteps.createCourier(courier)
@@ -82,6 +84,8 @@ public class CreateCourierTest {
     }
 
     @Test
+    @DisplayName("Check mistake code of /v1/courier, with no login")
+    @Description("Test for /v1/courier endpoint not creating courier with no password")
     public void ifNoPasswordShouldReturnMistakeBadRequest(){
         courier.setPassword("");
         courierSteps.createCourier(courier)
